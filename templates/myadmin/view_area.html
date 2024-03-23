@@ -1,0 +1,51 @@
+{% extends 'myadmin/layouts/base.html' %}
+{% load static %}
+{% block title %}View Area{% endblock title %}
+{% block banner %}View Area{% endblock banner %}
+{% block main_content %}
+<!--grid-->
+<div class="grid-form">
+ 		
+  
+  
+    <div class="grid-form1">
+      <h3 class="alert alert-danger text-center">All Area</h3>
+              
+      {% if area %}
+      <table  able class="table table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>State</th>
+            <th>City</th>
+            <th>Area</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+  
+        <tbody>
+          {% for ar in area %}
+            <tr>
+              <td>{{ar.id}}</td>
+              <td>{{ar.state.state}}</td>
+              <td>{{ar.city.city}}</td>
+              <td>{{ar.area}}</td>
+              <td><a href="{% url 'edit_area' ar.id %}">Edit</a></td>
+              <td><a href="{% url 'delete_area' ar.id %}">Delete</a></td>
+            </tr>
+          {% endfor %}  
+        </tbody>
+      </table>
+    {% else %}
+      <h5 class="text-center">No City Available</h5>
+    {% endif %}
+    <div class="panel-body">
+            
+    </div>
+    <div class="bs-example" data-example-id="form-validation-states-with-icons">
+      
+    </div>
+     </div>
+     <!--//grid-->
+{% endblock main_content %}

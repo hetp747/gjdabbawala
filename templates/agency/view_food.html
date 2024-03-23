@@ -1,0 +1,61 @@
+{% extends 'agency/layouts/base.html' %}
+{% load static %}
+{% block title %}View Food{% endblock title %}
+{% block banner %}View Food{% endblock banner %}
+{% block main_content %}
+<!--grid-->
+<div class="grid-form">
+
+  
+    <div class="grid-form1">
+             <h3 class="alert alert-danger text-center">All Foods</h3>
+              
+    {% if food %}
+    
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Food Id</th>
+            <th>Food Time</th>
+            <th>Food Name</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Image</th>
+            <th>Food type</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for fd in food %}
+            <tr>
+              <td>{{fd.id}}</td>
+              <td>{{fd.ftime}}</td>
+              <td>{{fd.fname}}</td>
+              <td>{{fd.fprice}}</td>
+              <td>{{fd.description|truncatewords:10}}</td>
+              <td>
+                <img src="{{fd.fimage.url}}" height="80" width="80">
+              </td>
+              <td>{{fd.ftype.name}}</td>
+              <td><a href="{% url 'edit_food' fd.id %}">Edit</a></td>
+              <td><a href="{% url 'delete_food' fd.id %}">Delete</a></td>
+                                                        
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      {% else %}
+        <h5 class="text-center">No Food Available</h5>
+      {% endif %}
+   
+    <div class="panel-body">
+            
+    </div>
+    <div class="bs-example" data-example-id="form-validation-states-with-icons">
+      
+    </div>
+     </div>
+     <!--//grid-->
+{% endblock main_content %}

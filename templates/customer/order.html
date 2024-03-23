@@ -1,0 +1,44 @@
+{% extends 'customer/layouts/base.html' %}
+{% load static %}
+{% block title %}Order{% endblock title %}
+{% block main_content %}
+<!-- banner -->
+<div class="innerpage-banner" id="home">
+	<div class="inner-page-layer">
+	</div>
+</div>
+<!-- //banner -->
+
+<!--  -->
+<section class="mail pt-lg-5 pt-4">
+	<div class="container pt-lg-5">
+		
+		<div class="row agileinfo_mail_grids">
+			<div class="col-lg-12 agileinfo_mail_grid_right">
+                <form class="text-center border border-light p-5" action="http://127.0.0.1:8000/customer/success/" method="POST">
+                  
+            
+                    <!-- RAZORPAY INTEGRATION HERE -->
+                    <script src="https://checkout.razorpay.com/v1/checkout.js" 
+                    data-key="rzp_test_Q13PoItwfR4lPG" 
+                    data-amount="{{payment.price_total}}"
+                    data-currency="INR" 
+                    data-order_id="{{payment.id}}" 
+                    data-buttontext="Pay with Razorpay"
+                    data-name="{{customer.user.username}}"
+                    data-description="Django and Data Science"
+                    data-image="https://example.com/your_logo.jpg" 
+                    data-prefill.name="PC"
+                    data-prefill.email="{{customer.user.email}}" 
+                    data-theme.color="#F37254"></script>
+            
+                </form>
+			</div>
+			
+		</div>
+	</div>
+	
+    <br/><br/>
+</section>
+<!-- // -->
+{% endblock main_content %}

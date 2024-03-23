@@ -1,0 +1,42 @@
+{% load static %}
+   
+<div class="navbar-default sidebar" role="navigation" style="margin-top: 10px;">
+  <div class="sidebar-nav navbar-collapse">
+  <ul class="nav" id="side-menu">
+  
+      <li>
+          <a href="{% url 'agency_dashboard' %}" class=" hvr-bounce-to-right"><i class="fa fa-dashboard nav_icon "></i><span class="nav-label">Dashboards</span> </a>
+      </li>
+     
+    
+      
+      <li>
+          <a href="#"><i class="fa fa-edit nav_icon"></i> <span class="nav-label">Food Type</span><span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+              <li><a href="{% url 'add_foodcategory' %}" class=" hvr-bounce-to-right"><i class="fa fa-plus nav_icon"></i>Add Food Type</a></li>
+              <li><a href="{% url 'view_foodcategory' %}" class=" hvr-bounce-to-right"><i class="fa fa-file-text-o nav_icon"></i>View Food Type</a></li>
+          </ul>
+      </li>
+       <li>
+          <a href="#" ><i class="fa fa-edit nav_icon"></i> <span class="nav-label">Food</span><span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+              <li><a href="{% url 'add_food' %}" class=" hvr-bounce-to-right"><i class="fa fa-plus nav_icon"></i>Add Food</a></li>
+              <li><a href="{% url 'view_food' %}" class=" hvr-bounce-to-right"><i class="fa fa-file-text-o nav_icon"></i>View Food</a></li>
+          </ul>
+      </li>
+      
+      <li>
+          <a href="{% url 'agency_orders' %}" class=" hvr-bounce-to-right"><i class="fa fa-file-text-o nav_icon"></i> <span class="nav-label">All Orders</span> </a>
+      </li>
+      
+      <li>
+          <a href="{% url 'agency_profile' %}" class=" hvr-bounce-to-right"><i class="fa fa-file-text-o nav_icon"></i><span class="nav-label" style="">Profile</span> </a>
+      </li>
+      <li>
+          <a href="{% url 'agency_change_password' %}" class=" hvr-bounce-to-right"><i class="fa fa-file-text-o nav_icon"></i><span class="nav-label" style="">Change Password</span> </a>
+      </li>
+      <li>
+          <a href="{% url 'user_logout' %}" class=" hvr-bounce-to-right"><i class="fa fa-sign-out nav_icon "></i><span class="nav-label" style="">Logout</span> </a>
+      </li>
+  </ul>
+</div>

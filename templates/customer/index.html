@@ -1,0 +1,444 @@
+{% extends 'customer/layouts/base.html' %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+{% block links %}
+<style type="text/css">
+	.btn{
+				outline: none;
+			/*border: none;*/
+			cursor: pointer;
+			-webkit-transition: 0.5s all;
+			-moz-transition: 0.5s all;
+			-o-transition: 0.5s all;
+			-ms-transition: 0.5s all;
+			transition: 0.5s all;
+			background: #f85a40;
+			border-radius: 5px;
+			color: #fff;
+			font-size: 20px;
+			letter-spacing: 1px;
+			padding: 0px 30px;
+			display: inline-block;
+			width: 230px;
+			}
+			.btn:hover{
+				background: #fff;
+				color: #f85a40;
+			}
+			#search_bg{
+				padding: 10px;
+				background: #333;
+				border-radius: 5px;
+			}
+			#search_bg h2{
+				color: #fff;
+			}
+			#search_bg select{
+				margin-left: 20px;
+				height: 50px;
+				font-size: 20px;
+			}
+			a.text-danger:hover{
+				color: green!important;
+			}
+</style>
+{% endblock links %}
+{% block main_content %}
+<!-- banner -->
+<div class="banner" id="home">
+	<div class="layer">
+		<div class="container">
+			<div class="banner-text-agile">
+				<div class="row">
+					<div class="col-lg-6 p-0">
+						<!-- banner slider-->
+					<div class="csslider infinity" id="slider1">
+						<input type="radio" name="slides" checked="checked" id="slides_1" />
+						<input type="radio" name="slides" id="slides_2" />
+						<input type="radio" name="slides" id="slides_3" />
+						<ul class="banner_slide_bg">
+							<li>
+								<div class="container-fluid">
+									<div class="w3ls_banner_txt" style="position: relative;bottom: 40px;">
+										<h3 class="b-w3ltxt text-capitalize mt-md-4"><span>Welcome to </span> GJ Dabbavala</h3>
+										<p class="w3ls_pvt-title my-3" style="text-align: justify;"><b>VS Dabbawala</b> is a web application by which a customer can
+										purchase monthly, weekly tiffin service for lunch and dinner
+										with different food category from any of registered tiffin
+										service agencies. And Tiffin Service Agency delivers meal to
+										the customer as per their purchased plans. Here Customer
+										can share reviews about Tiffin Service Agency and Its food
+										quality that helps others while purchasing the tiffin service.</p>
+										<a href="{% url 'about' %}" class="btn btn-banner my-sm-3 mb-3" style="height: 41px;text-align: center;padding-top: 4px;">Read More</a>
+										<a href="{% url 'contact' %}" class="btn btn-banner1 my-sm-3 mb-3" style="height: 41px;text-align: center;padding-top: 4px;">Contact Us</a>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="container-fluid">
+									<div class="w3ls_banner_txt">
+										<h3 class="b-w3ltxt text-capitalize mt-md-4"><span>Tasty and healthy</span> Food</h3>
+										<p class="w3ls_pvt-title my-3">Onec Consequat Sapien Ut Leo Cursus Rhoncus. Nullam Dui Mi, Vulputate Ac 
+										Metus Semper Nullam Dui Mi. Vestibulum Ante Ipsum Primis In Faucibus Orci Luctus Et Ultrices Posuere 
+										Cubilia Curae.</p>
+										<a href="{% url 'about' %}" class="btn btn-banner my-sm-3 mb-3" style="height: 41px;text-align: center;padding-top: 4px;">Read More</a>
+										<a href="{% url 'contact' %}" class="btn btn-banner1 my-sm-3 mb-3" style="height: 41px;text-align: center;padding-top: 4px;">Contact Us</a>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="container-fluid">
+									<div class="w3ls_banner_txt">
+										<h3 class="b-w3ltxt text-capitalize mt-md-4"><span>Delicious & crispy</span> Recipes</h3>
+										<p class="w3ls_pvt-title my-3">Onec Consequat Sapien Ut Leo Cursus Rhoncus. Nullam Dui Mi, Vulputate Ac 
+										Metus Semper Nullam Dui Mi. Vestibulum Ante Ipsum Primis In Faucibus Orci Luctus Et Ultrices Posuere 
+										Cubilia Curae.</p>
+										<a href="{% url 'about' %}" class="btn btn-banner my-sm-3 mb-3" style="height: 41px;text-align: center;padding-top: 4px;">Read More</a>
+										<a href="{% url 'contact' %}" class="btn btn-banner1 my-sm-3 mb-3" style="height: 41px;text-align: center;padding-top: 4px;">Contact Us</a>
+									</div>
+								</div>
+							</li>
+						</ul>
+						<div class="navigation">
+							<div>
+								<label for="slides_1"></label>
+								<label for="slides_2"></label>
+								<label for="slides_3"></label>
+							</div>
+						</div>
+					</div>
+					<!-- //banner slider-->
+
+					</div>
+					<div class="col-lg-6 col-md-8 mt-lg-0 mt-5">
+						<img src="{% static 'customer/images/h1.jpg' %}" alt="" class="img-fluid" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- //banner -->
+
+<!-- Search Section Start -->
+<form method="post">
+	<section class="services-inner py-5">
+		<h2 class="heading text-center col-sm-12 mb-4">Search Tiffin Agency </h2>
+
+	<div class="container py-md-3" id="search_bg">
+		<div class="row service-grids">
+			<div class="row justify-content-center col-lg-12">
+				
+				
+				<form method="post">
+					{% csrf_token %}
+				<div class="col-md-3 col-sm-12 mt-3">
+					<div class="form-group">
+							<select class="form-control" name="state" id="state" required onchange="getcity()">
+									<option value="" selected disabled>Select State</option>
+									{% for s in state %}
+										<option value="{{s.id}}" {% if s.id == st %}selected{% endif %}>{{s.state}}</option>
+									{% endfor %}
+											
+									
+							</select>
+						</div>
+					</div>
+
+					<div class="col-md-3 col-sm-12 mt-3">
+						<div class="form-group">
+								<select class="form-control" name="city" id="city" required onchange="getarea()" >
+										<option  value="" selected disabled>Select City</option>
+										{% for c in city %}
+											<option value="{{c.id}}" {% if c.id == ct %}selected{% endif %}>{{c.city}}</option>
+										{% endfor %}
+								</select>
+						</div>
+					</div>			
+						<div class="col-md-3 col-sm-12 mt-3">
+							<div class="form-group">
+									<select class="form-control" name="area" id="area" required>
+											<option class="form-control" value="" selected >Select Area</option>
+											{% for a in area %}
+												<option value="{{a.id}}" {% if a.id == ar %}selected{% endif %}>{{a.area}}</option>
+											{% endfor %}
+									</select>
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-12 mt-3">
+							<div class="form-group">
+								<div class="submit-buttons">
+									<input type="submit" name="search" class="btn " value="Search" style="    height: calc(2.25rem + 2px); text-align: center;height: 50px; font-size: 20px;margin-left: 20px;">
+								</div>
+							</div>
+						</div>
+					</form>
+						
+				</div>
+				
+		</div>
+	</div>
+</section>
+</form>
+<!-- Search Section End -->
+
+<section class="services py-5">
+	<div class="container py-lg-5">
+		<h3 class="heading text-center mb-sm-5 mb-4">Tiffin Service Provider</h3>
+		<div class="row offer-grids">
+			{% if agency %}
+				{% for ag in agency %}
+					<div class="col-lg-4 col-md-6">
+						<div class="ser1">
+							<div class="bg-layer">
+								<img src="{{ag.image.url}}" width="100%">
+								<h5 class="mt-3" align="center" style="">{{ag.user.username}}</h5>
+								<br>
+								<!-- <p class="mt-3">Vestibulum ante ipsum primiss sed inorc faucibus orcit luctus ipsum.</p> -->
+								<p class="pull-center font-weight-bold"><a href="{% url 'view_more_details' ag.id %}" class="" style="position: relative;left: 75px; background-color: #f85a40; color: white; padding: 10px; border-radius: 10px; width: 250px;">View More</a></p>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			{% else %}
+					<h5 class="mx-auto">No Service Provider Available</h5>
+			{% endif %}
+					
+		</div>
+	</div>
+</section>
+
+<!-- about -->
+<section class="about py-5">
+	<div class="container py-md-3">
+		<h2 class="heading text-center mb-sm-5 mb-4">About Us </h2>
+		<div class="row">
+			<div class="col-lg-8">
+				<h4 class="about-left">Enjoy the greatest Pleasure in our hotel!</h4>
+				<p class="mt-sm-4 mt-3">Suspendisse id felis sed felis tincidunt finibus. Nulla sed justo tellus. Donec ut felis ante. Quisque ac sapien 
+				quis orci pulvinar finibus quis eu urna. onec consequat sapien ut leo cursus rhoncus. Nullam dui mi, vulputate ac metus semper Nullam
+				dui mi.	Vestibulum ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Curabitur quis.</p>
+				<div class="row mt-4">
+					<div class="col-md-3 col-6">
+						<div class="about-box">
+							<span class="icon">
+								<span class="fa fa-birthday-cake"></span>
+							</span>
+							<h4>Healthy</h4>
+						</div>
+					</div>
+					<div class="col-md-3 col-6">
+						<div class="about-box">
+							<span class="icon">
+								<span class="fa fa-rocket"></span>
+							</span>
+							<h4>Spicy & Hot</h4>
+						</div>
+					</div>
+					<!-- .about-box ends here -->
+					<div class="col-md-3 col-6 mt-md-0 mt-4">
+						<div class="about-box">
+							<span class="icon">
+								<span class="fa fa-cutlery"></span>
+							</span>
+							<h4>Crunchy</h4>
+						</div>
+					</div>
+					<div class="col-md-3 col-6 mt-md-0 mt-4">
+						<div class="about-box">
+							<span class="icon">
+								<span class="fa fa-coffee"></span>
+							</span>
+							<h4>Reciepe</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-8 dental">
+				<img src="{% static 'customer/images/banner1.jpg' %}" class="img-fluid" alt="" />
+			</div>
+		</div>
+	</div>
+</section>
+<!-- //about -->
+
+<!-- about bottom -->
+<section class="about-bottom pb-5">
+	<div class="container pb-lg-3">
+		<div class="row bottom-grids">
+			<div class="col-lg-6">
+				<img src="{% static 'customer/images/bg.jpg' %}" class="img-fluid" alt="" />
+			</div>
+			<div class="col-lg-6 mt-lg-0 mt-5">
+				<h4>A tasty and healthy Crispy that we serve for you.</h4>
+				<p class="py-3">Suspendisse id felis sed felis tincidunt finibus. Nulla sed in justo inter tellus. Donec ut felis ante. Quisque acin sapien 
+				quis orci pulvinar finibus quis urna. onec consequat sapien ut leo cursus rhoncus. Nullam dui mi, vulputate ac quis eu urna Quisque quis eu urna lorem elit.</p>
+				<p class="">Quisque ac sapien quis orci pulvinar finibus quis eu urna Quisque Suspendisse id felis sed felis tincidunt finibus.
+				Nulla sed justo tellus. Donec ut felis ante ipsum.</p>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- //about bottom -->
+
+<!-- services -->
+<section class="services py-5">
+	<div class="container py-lg-5">
+		<h3 class="heading text-center mb-sm-5 mb-4">What we do </h3>
+		<div class="row offer-grids">
+			<div class="col-lg-4 col-md-6">
+				<div class="ser1">
+					<div class="bg-layer">
+						<h4 class="">Service1</h4>
+						<p class="mt-3">Vestibulum ante ipsum primiss sed inorc faucibus orcit luctus ipsum et ultrices sede edt posuere cubiliater Curae nisl, Curabit ur quis luctu.</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6 mt-md-0 mt-4">
+				<div class="ser2">
+					<div class="bg-layer">
+						<h4 class="">Service2</h4>
+						<p class="mt-3">Vestibulum ante ipsum primiss sed inorc faucibus orcit luctus ipsum et ultrices sede edt posuere cubiliater Curae nisl, Curabit ur quis luctu.</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6 mt-lg-0 mt-4">
+				<div class="ser3">
+					<div class="bg-layer">
+						<h4 class="">Service3</h4>
+						<p class="mt-3">Vestibulum ante ipsum primiss sed inorc faucibus orcit luctus ipsum et ultrices sede edt posuere cubiliater Curae nisl, Curabit ur quis luctu.</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6 mt-4">
+				<div class="ser4">
+					<div class="bg-layer">
+						<h4 class="">Service4</h4>
+						<p class="mt-3">Vestibulum ante ipsum primiss sed inorc faucibus orcit luctus ipsum et ultrices sede edt posuere cubiliater Curae nisl, Curabit ur quis luctu.</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6 mt-4">
+				<div class="ser5">
+					<div class="bg-layer">
+						<h4 class="">Service5</h4>
+						<p class="mt-3">Vestibulum ante ipsum primiss sed inorc faucibus orcit luctus ipsum et ultrices sede edt posuere cubiliater Curae nisl, Curabit ur quis luctu.</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6 mt-4">
+				<div class="ser6">
+					<div class="bg-layer">
+						<h4 class="">Service6</h4>
+						<p class="mt-3">Vestibulum ante ipsum primiss sed inorc faucibus orcit luctus ipsum et ultrices sede edt posuere cubiliater Curae nisl, Curabit ur quis luctu.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- //services -->	
+
+<!-- testimonials -->
+<section class="feedback" id="testimonials">
+	<div class="feedback-layer py-5">
+		<div class="container py-lg-5">
+		<h3 class="heading text-center mb-sm-5 mb-4">Testimonials</h3>
+			<div class="row">
+				<div class="col-lg-4 col-md-6">
+					<div class="feedback-info">
+						<div class="feedback-top p-4">
+							<span class="fa fa-quote-right"></span> 
+							<p> Sed semper leo metus, a lacinia eros ut semper at. Etiam sodales orci sit amet vehicula pellentesque. blandit nec sed tellus. Nam pharetra.</p>
+							<div class="clearfix"></div>
+						</div>
+						<div class="feedback-grids">
+							<div class="feedback-img">
+								<img src="{% static 'customer/images/ser1.jpg' %}" class="img-fluid" alt="">
+							</div>
+							<div class="feedback-img-info">
+								<h5>Mary Jane</h5>
+								<p class="font-italic">- March 3, 2019.</p>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 mt-md-0 mt-5">
+					<div class="feedback-info">
+						<div class="feedback-top p-4">
+							<span class="fa fa-quote-right"></span> 
+							<p> Sed semper leo metus, a lacinia eros ut semper at. Etiam sodales orci sit amet vehicula pellentesque. blandit nec sed tellus. Nam pharetra.</p>
+							<div class="clearfix"></div>
+						</div>
+						<div class="feedback-grids">
+							<div class="feedback-img">
+								<img src="{% static 'customer/images/ser2.jpg' %}" class="img-fluid" alt="">
+							</div>
+							<div class="feedback-img-info">
+								<h5>Mary Jane</h5>
+								<p class="font-italic">- March 3, 2019.</p>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 mt-lg-0 mt-5">
+					<div class="feedback-info">
+						<div class="feedback-top p-4">
+							<span class="fa fa-quote-right"></span> 
+							<p> Sed semper leo metus, a lacinia eros ut semper at. Etiam sodales orci sit amet vehicula pellentesque. blandit nec sed tellus. Nam pharetra.</p>
+							<div class="clearfix"></div>
+						</div>
+						<div class="feedback-grids">
+							<div class="feedback-img">
+								<img src="{% static 'customer/images/ser3.jpg' %}" class="img-fluid" alt="">
+							</div>
+							<div class="feedback-img-info">
+								<h5>Mary Jane</h5>
+								<p class="font-italic">- March 3, 2019.</p>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- //testimonials -->
+
+<!-- blog -->
+<section class="blog py-5">
+	<div class="container py-md-5 py-3">
+		<h3 class="heading text-center mb-sm-5 mb-4">Latest News </h3>
+		<div class="row blog-grids">
+			<div class="col-lg-7 mb-lg-5 blog-img1">
+				<img src="{% static 'customer/images/blog1.jpg' %}" alt="" class="img-fluid"/>
+				<a href="{% url 'single' %}">Blog #1</a>
+			</div>
+			<div class="col-lg-5 mb-lg-5 mb-4">
+				<h5>March 3, 2019.</h5>
+				<h4 class="my-3">Nullam dui mi, vulputate ac cursus.</h4>
+				<p class="my-3">onec consequat sapien ut leo cursus rhoncus. Nullam duit mi, vulputate ac metus semper Nullam dui mi.
+				 Vestibulum ante ipsum primis in faucibus orci luctus et ultrices morbi posuere cubilia Curae; Curabitur quis luctus lectus.
+				 leo et cursus rhoncus. Nullam dui mi, vulputate cursus. </p>
+				<a href="{% url 'single' %}" class="btn-banner"> View Post </a>
+			</div>
+			<div class="col-lg-5 mb-lg-0 mb-4">
+				<h5>March 3, 2019.</h5>
+				<h4 class="my-3">Nullam dui mi, vulputate ac cursus.</h4>
+				<p class="my-3">onec consequat sapien ut leo cursus rhoncus. Nullam duit mi, vulputate ac metus semper Nullam dui mi.
+				 Vestibulum ante ipsum primis in faucibus orci luctus et ultrices morbi posuere cubilia Curae; Curabitur quis luctus lectus.
+				 leo et cursus rhoncus. Nullam dui mi, vulputate cursus.</p>
+				<a href="{% url 'single' %}" class="btn-banner"> View Post </a>
+			</div>
+			<div class="col-lg-7 blog-img2">
+				<img src="{% static 'customer/images/blog2.jpg' %}" alt="" class="img-fluid"/>
+				<a href="{% url 'single' %}">Blog #2</a>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- //blog -->
+
+{% endblock main_content %}

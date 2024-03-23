@@ -1,0 +1,82 @@
+{% load static %}
+<!-- top header -->
+<div class="header-top">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6">
+				<ul class="d-lg-flex header-w3_pvt">
+					<li class="mr-lg-3">
+						<span class="fa fa-envelope-open"></span>
+						<a href="mailto:info@example.com" class="">info@Example.com</a>
+					</li>
+					<li>
+						<span class="fa fa-phone"></span>
+						<p class="d-inline">Call Us +12 345 678</p>
+					</li>
+				</ul>
+			</div>
+			<div class="col-sm-6 header-right-w3_pvt">
+				<ul class="d-lg-flex header-w3_pvt justify-content-lg-end">
+					<li class="">
+						<span class=""><span class="fas fa-clock"></span>Mon - Sun : 8:30am to 9:30pm</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- //top header -->
+
+<!-- //header -->
+<header class="">
+	<div class="container">
+			<div id="logo">
+				<h1> 
+					<a href="{% url 'customer_home' %}">
+						<img class="navbar-brand" src="{% static 'customer/images/GJ_Logo.svg' %}" style="position: relative;height: 80px;width: 150px;border-radius: 10px;">	
+					</a>
+				</h1>
+			</div>
+		<!-- nav -->
+		<nav class="d-lg-flex">
+
+			<label for="drop" class="toggle"><span class="fa fa-bars"></span></label>
+			<input type="checkbox" id="drop" />
+			<ul class="mt-4 ml-auto">
+				<li class="active"><a href="{% url 'customer_home' %}">Home</a></li>
+				
+					<li class=""><a href="{% url 'about' %}">About Us</a></li>
+					<!-- <li class=""><a href="services.php">Services</a></li> -->
+								
+				<li class=""><a href="{% url 'contact' %}">Contact Us</a></li>
+				
+				
+				{% if request.user.is_authenticated %}
+				
+					<li class="dropdown">
+						<a href="#">My Account <i class="fa fa-cog"></i></a>
+						<ul class="dropdown-menu">
+								<li><a class="dropdown-item" href="{% url 'edit_profile' %}">Edit Profile</a></li>
+								<li><a class="dropdown-item" href="{% url 'customer_change_password' %}">Change Password</a></li>
+								<li><a class="dropdown-item" href="{% url 'feedback' %}">Feedback</a></li>
+								<li><a class="dropdown-item" href="{% url 'customer_orders' %}">My Orders</a></li>
+								<li><a class="dropdown-item" href="{% url 'user_logout' %}">Logout</a></li>
+						</ul>
+					</li>
+					
+					<li class=""><a href="{% url 'shopping_cart' %}">Cart</a></li>
+				{% else %}
+					
+					<li class=""><a href="{% url 'user_login' %}">Login</a></li>
+
+				{% endif %}
+						
+				
+						
+			</ul>
+		</nav>
+		<div class="clear"></div>
+		<!-- //nav -->
+	</div>
+</header>
+<!-- //header -->

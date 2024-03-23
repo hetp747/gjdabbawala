@@ -1,0 +1,48 @@
+{% extends 'myadmin/layouts/base.html' %}
+{% load static %}
+{% block title %}Edit State{% endblock title %}
+{% block banner %}Edit State{% endblock banner %}
+{% block main_content %}
+<!--grid-->
+<div class="grid-form">
+ 		
+
+
+  <div class="grid-form1">
+  	  <div>
+</div>
+  	         <div class="tab-content">
+						<div class="tab-pane active" id="horizontal-form">
+							<form class="form-horizontal" method="POST" action="/myadmin/update_state/{{state.id}}/">
+								{% csrf_token %}
+								<div class="form-group">
+									<label for="focusedinput" class="col-sm-4 control-label">Add State</label>
+									<div class="col-sm-6">
+										<input type="text" class="form-control1" name="state" value="{{state.state}}" id="state" placeholder=" Add State" required>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="focusedinput" class="col-sm-4 control-label"></label>
+									<div class="col-sm-6">
+										<button class="btn-primary btn" value="submit" name="submit" id="submit" type="submit">Submit</button>
+										<a href="{% url 'view_state' %}" class="btn-default btn">Cancel</a>
+				
+									</div>
+								</div>
+								
+								
+							</form>
+						</div>
+					</div>
+					
+					
+ 
+  
+	</div>
+	
+    
+  </div>
+ 	</div>
+ 	<!--//grid-->
+{% endblock main_content %}

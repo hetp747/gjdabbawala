@@ -1,0 +1,49 @@
+{% extends 'myadmin/layouts/base.html' %}
+{% load static %}
+{% block title %}Agencies{% endblock title %}
+{% block banner %}Agencies{% endblock banner %}
+{% block main_content %}
+<!--grid-->
+<div class="grid-form">
+
+  
+    <div class="grid-form1">
+      <h3 class="alert alert-danger text-center">All Agencies</h3>
+              
+    {% if all_agencies %}
+            
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>ID</th>
+           <th>Name</th>
+          <th>Email</th>
+          <th>Contact</th>
+          <th>More Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for agency in all_agencies %}
+          <tr>
+            <td>{{agency.id}}</td>
+            <td>{{agency.user.username}}</td>
+            <td>{{agency.user.email}}</td>
+            <td>{{agency.contact}}</td>
+            <td><a href="{% url 'profile' agency.id %}">More Details</a></td>
+          </tr>
+        
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+      <h5 class="text-center">No Agencies Available</h5>
+    {% endif %}
+    <div class="panel-body">
+            
+    </div>
+    <div class="bs-example" data-example-id="form-validation-states-with-icons">
+      
+    </div>
+     </div>
+     <!--//grid-->
+{% endblock main_content %}

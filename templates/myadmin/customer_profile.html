@@ -1,0 +1,80 @@
+{% extends 'myadmin/layouts/base.html' %}
+{% load static %}
+{% block title %}Customer Profile{% endblock title %}
+{% block banner %}Customer Profile{% endblock banner %}
+{% block links %}  
+  <style type="text/css">
+  
+    body{
+       background: linear-gradient(90deg, #e8e8e8 50%, #3d009e 50%);
+     }
+     .portfolio{
+       padding:6%;
+       text-align:center;
+     }
+     .heading{
+       background: #fff;
+       padding: 1%;
+       text-align: left;
+       box-shadow: 0px 0px 4px 0px #545b62;
+     }
+     .heading img{
+       width: 10%;
+     }
+     .bio-info{
+       padding: 5%;
+       background:#fff;
+       box-shadow: 0px 0px 4px 0px #b0b3b7;
+     }
+     .name{
+       font-family: 'Charmonman', cursive;
+       font-weight:600;
+     }
+     .bio-image{
+       text-align:center;
+     }
+     .bio-image img{
+       border-radius:50%;
+     }
+     .bio-content{
+       text-align:left;
+     }
+     .bio-content p{
+       font-weight:900;
+       font-size:110%;
+     }
+   </style>
+   
+{% endblock links %}
+{% block main_content %}
+
+  
+  <div class="grid-form">
+    <div class="grid-form1" style="height:400px;">
+      <div class="row" style="margin:90px 0;">
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="bio-image">
+                <img src="{{user.image.url}}" alt="image" style="height:200px; width:200px;">
+                <h4></h4>
+                <h5> </h5>
+              </div>      
+            </div>
+          </div>  
+        </div>
+        <div class="col-md-6">
+            <h5 style="margin:15px 0; font-size:110%;"><b>Contact : </b>{{user.contact}}</h5>
+            <h5 style="margin:15px 0; font-size:110%;"><b>Date of Birth : </b>{{user.dob}}</h5>
+            <h5 style="margin:15px 0; font-size:110%;"><b>Gender : </b>{{user.gender}}</h5>
+            <h5 style="margin:15px 0; font-size:110%;"><b>Address : </b>{{user.address}}</h5>
+            <h5 style="margin:15px 0; font-size:110%;"><b>City : </b>{{user.city.city}}</h5>
+            <h5 style="margin:15px 0; font-size:110%;"><b>State : </b>{{user.state.state}} </h5>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <!--//grid-->
+{% endblock main_content %}

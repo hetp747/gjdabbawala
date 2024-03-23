@@ -1,0 +1,170 @@
+{% extends 'customer/layouts/base.html' %}
+{% load static %}
+{% block title %}Success{% endblock title %}
+{% block links %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+{% endblock links %}
+{% block main_content %}
+<!-- banner -->
+<div class="innerpage-banner" id="home">
+	<div class="inner-page-layer">
+	</div>
+</div>
+<section class="blog py-5 container">
+	<div class="container py-md-5 py-3">
+		<div class="row">			
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-5 ">
+	
+				<ul class="nav nav-pills justify-content-center mb-5">
+					<li class="active"><a class="menu123" data-toggle="tab" href="#home1">Lunch</a></li>
+					<li><a data-toggle="tab" href="#menu1" class="menu123">Dinner</a></li>
+				</ul>
+
+		
+			
+				 
+			  	<div class="tab-content">
+						<!--Start Lunch-->
+						<div id="home1" class="tab-pane fade in active">
+								{% if lunch_foods %}
+								<!-- First Row Over Here -->
+				
+								<div class="row">
+									
+									{% for lfood in lunch_foods %}
+										<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+											<div class="panel panel-default">
+												<div class="panel-body">
+													<div class="row">
+														<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+															<img src="{{lfood.fimage.url}}" style="height: 230px;" alt="" class="img-rounded"/>
+																<h4 class="text-center mt-5"></h4>
+														</div>
+														<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+															<h4 class="mb-1">Details : </h4>
+															<p>
+																<table class="table">
+																	<tr>
+																		<th>Roti</th>
+																		<th>:</th>
+																		<th>{{lfood.roti}}</th>
+																	</tr>
+																	<tr>
+																		<th>Rise</th>
+																		<th>:</th>
+																		<th>{{lfood.rise}}</th>
+																	</tr>
+																	<tr>
+																		<th>Vegitable</th>
+																		<th>:</th>
+																		<th>{{lfood.veg}}</th>
+																	</tr>
+																	<tr>
+																		<th>Butter Milk</th>
+																		<th>:</th>
+																		<th>{{lfood.butter_milk}}</th>
+																	</tr>
+																	<tr>
+																		<th>Papad</th>
+																		<th>:</th>
+																		<th>{{lfood.papad}}</th>
+																	</tr>
+								
+																</table>
+															</p>
+
+															{% if request.user.is_authenticated %}
+															
+															<a href="{% url 'add_to_cart' lfood.id %}" class="pull-right" style="background: #f85a40; height: 48px; padding: 10px;color: #000;font-size:17px;font-weight:bold; border-radius: 7px;">Add to Cart</a>
+																{% endif %}
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									{% endfor %}
+								</div>		
+								{% else %}
+								<h3 class="text-center">No Lunch Food Available</h3>
+								{% endif %}
+							</div>  
+				    	
+						<!--End Lunch-->
+					
+						<!--Start Dinner-->
+			    
+			    
+					
+						<div id="menu1" class="tab-pane fade">
+							{% if dinner_foods %}
+							<div class="row">
+
+								{% for dfood in dinner_foods %}
+										<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+											<div class="panel panel-default">
+												<div class="panel-body">
+													<div class="row">
+														<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+															<img src="{{dfood.fimage.url}}" style="height: 230px;" alt="" class="img-rounded"/>
+																<h4 class="text-center mt-5"></h4>
+														</div>
+														<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+															<h4 class="mb-1">Details : </h4>
+															<p>
+																<table class="table">
+																	<tr>
+																		<th>Roti</th>
+																		<th>:</th>
+																		<th>{{dfood.roti}}</th>
+																	</tr>
+																	<tr>
+																		<th>Rise</th>
+																		<th>:</th>
+																		<th>{{dfood.rise}}</th>
+																	</tr>
+																	<tr>
+																		<th>Vegitable</th>
+																		<th>:</th>
+																		<th>{{dfood.veg}}</th>
+																	</tr>
+																	<tr>
+																		<th>Butter Milk</th>
+																		<th>:</th>
+																		<th>{{dfood.butter_milk}}</th>
+																	</tr>
+																	<tr>
+																		<th>Papad</th>
+																		<th>:</th>
+																		<th>{{dfood.papad}}</th>
+																	</tr>
+																</table>
+															</p>
+
+															{% if request.user.is_authenticated %}
+																<a href="{% url 'add_to_cart' dfood.id %}" class="pull-right" style="background: #f85a40; height: 48px; padding: 10px;color: #000;font-size:17px;font-weight:bold; border-radius: 7px;">Add to Cart</a>
+																{% endif %}
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									{% endfor %}
+								
+								
+							</div>	
+							{% else %}
+							<h3 class="text-center">No Dinner Food Available</h3>
+							{% endif %}
+							
+						</div>
+					<!--End Dinner-->
+		
+			  	</div>
+					
+					
+			</div>  
+		</div>
+	</div>
+</section>
+				<!-- Dinner -->
+{% endblock main_content %}

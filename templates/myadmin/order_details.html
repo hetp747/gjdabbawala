@@ -1,0 +1,46 @@
+{% extends 'myadmin/layouts/base.html' %}
+{% load static %}
+{% block title %}Order Details{% endblock title %}
+{% block banner %}Order Details{% endblock banner %}
+{% block main_content %}
+<!--grid-->
+<div class="grid-form">
+ 		
+  
+    <div class="grid-form1">
+           <h3 class="alert alert-danger text-center">Order Details</h3>
+            <table class="table table-bordered">
+               <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th>Food Id</th>
+                    <th>Food Dish</th>
+                    <th>Food Time</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for ord in ords %}
+                  <tr>
+                    <td>{{ord.order.id}}</td>
+                    <td>{{ord.id}}</td>
+                    <td>{{ord.food.fname}}</td>
+                    <td>{{ord.ftime}}</td>
+                    <td>{{ord.price}}</td>
+                    <td>{{ord.quantity}}</td>
+                    
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+   
+    <div class="panel-body">
+            
+    </div>
+    <div class="bs-example" data-example-id="form-validation-states-with-icons">
+      
+    </div>
+     </div>
+     <!--//grid-->
+{% endblock main_content %}

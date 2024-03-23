@@ -1,0 +1,45 @@
+{% extends 'myadmin/layouts/base.html' %}
+{% load static %}
+{% block title %}Orders{% endblock title %}
+{% block banner %}Orders{% endblock banner %}
+{% block main_content %}
+<!--grid-->
+<div class="grid-form">
+  
+    <div class="grid-form1">
+      <h3 class="alert alert-danger text-center">All Orders</h3>
+      {% if ords %}
+      <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>OrderId</th>
+                <th>Customer</th>
+              <th>Agency</th>
+              <th>Date</th>
+              <th>Order Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for ord in ords %}
+            <tr>
+              <td>{{ord.id}}</td>
+              <td>{{ord.user.username}}</td>
+              <td>{{ord.agency.user.username}}</td>
+              <td>{{ord.date}}</td>
+              <td><a href="{% url 'order_details' ord.id %}">View Order Details</a></td>
+            </tr>
+            {% endfor %} 
+          </tbody>
+        </table>
+        {% else %}
+          <h5 class="text-center">No Orders Available</h5>
+        {% endif %}
+    <div class="panel-body">
+            
+    </div>
+    <div class="bs-example" data-example-id="form-validation-states-with-icons">
+      
+    </div>
+     </div>
+     <!--//grid-->
+{% endblock main_content %}

@@ -1,0 +1,47 @@
+{% extends 'agency/layouts/base.html' %}
+{% load static %}
+{% block title %}View Food Category{% endblock title %}
+{% block banner %}View Food Category{% endblock banner %}
+{% block main_content %}
+<!--grid-->
+<div class="grid-form">
+ 		
+  
+  
+    <div class="grid-form1">
+      <h3 class="alert alert-danger text-center">All Food Type</h3>
+              
+      {% if food_cat %}
+      <table  able class="table table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Food Name</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+  
+        <tbody>
+          {% for cat in food_cat %}
+            <tr>
+              <td>{{cat.id}}</td>
+              <td>{{cat.name}}</td>
+              <td><a href="{% url 'edit_foodcategory' cat.id %}">Edit</a></td>
+              <td><a href="{% url 'delete_foodcategory' cat.id %}">Delete</a></td>
+            </tr>
+          {% endfor %}  
+        </tbody>
+      </table>
+    {% else %}
+      <h5 class="text-center">No Food Category Available</h5>
+    {% endif %}
+    <div class="panel-body">
+            
+    </div>
+    <div class="bs-example" data-example-id="form-validation-states-with-icons">
+      
+    </div>
+     </div>
+     <!--//grid-->
+{% endblock main_content %}

@@ -1,0 +1,49 @@
+{% extends 'myadmin/layouts/base.html' %}
+{% load static %}
+{% block title %}View City{% endblock title %}
+{% block banner %}View City{% endblock banner %}
+{% block main_content %}
+<!--grid-->
+<div class="grid-form">
+ 		
+  
+  
+    <div class="grid-form1">
+      <h3 class="alert alert-danger text-center">All City</h3>
+              
+      {% if city %}
+      <table  able class="table table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>State</th>
+            <th>City</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+  
+        <tbody>
+          {% for ct in city %}
+            <tr>
+              <td>{{ct.id}}</td>
+              <td>{{ct.state.state}}</td>
+              <td>{{ct.city}}</td>
+              <td><a href="{% url 'edit_city' ct.id %}">Edit</a></td>
+              <td><a href="{% url 'delete_city' ct.id %}">Delete</a></td>
+            </tr>
+          {% endfor %}  
+        </tbody>
+      </table>
+    {% else %}
+      <h5 class="text-center">No City Available</h5>
+    {% endif %}
+    <div class="panel-body">
+            
+    </div>
+    <div class="bs-example" data-example-id="form-validation-states-with-icons">
+      
+    </div>
+     </div>
+     <!--//grid-->
+{% endblock main_content %}

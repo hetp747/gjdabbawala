@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>{% block title %}{% endblock title %}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Minimal Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Custom Theme files -->
+<link href="{% static 'myadmin/css/bootstrap.min.css' %}" rel='stylesheet' type='text/css' />
+<link href="{% static 'myadmin/css/style.css' %}" rel='stylesheet' type='text/css' />
+<link href="{% static 'myadmin/css/font-awesome.css' %}" rel="stylesheet"> 
+<script src="{% static 'myadmin/js/jquery.min.js' %}"> </script>
+<script src="{% static 'myadmin/js/bootstrap.min.js' %}"> </script>
+  
+<!-- Mainly scripts -->
+<script src="{% static 'myadmin/js/jquery.metisMenu.js' %}"></script>
+<script src="{% static 'myadmin/js/jquery.slimscroll.min.js' %}"></script>
+<!-- Custom and plugin javascript -->
+<link href="{% static 'myadmin/css/custom.css' %}" rel="stylesheet">
+<script src="{% static 'myadmin/js/custom.js' %}"></script>
+<script src="{% static 'myadmin/js/screenfull.js' %}"></script>
+		<script>
+		$(function () {
+			$('#supported').text('Supported/allowed: ' + !!screenfull.enabled);
+
+			if (!screenfull.enabled) {
+				return false;
+			}
+
+			
+
+			$('#toggle').click(function () {
+				screenfull.toggle($('#container')[0]);
+			});
+			
+
+			
+		});
+		</script>
+		
+    {% block links %}{% endblock links %}
+</head>
+<body>
+<div id="wrapper">
+     
+     
+        {% include 'myadmin/layouts/header.html' %}
+     
+       
+            <!-- Brand and toggle get grouped for better mobile display -->
+		 
+		   <!-- Collect the nav links, forms, and other content for toggling -->
+		   <!-- /.navbar-collapse -->
+			<div class="clearfix">
+       
+     </div>
+	  
+		    {% include 'myadmin/layouts/sidebar.html' %}
+			</div>
+        </nav>
+		 <div id="page-wrapper" class="gray-bg dashbard-1">
+       <div class="content-main">
+ 
+ 	<!--banner-->	
+		     <div class="banner">
+		    	<h2>
+				<a href="{% url 'dashboard' %}">Home</a>
+				<i class="fa fa-angle-right"></i>
+				<span>{% block banner %}{% endblock banner %}</span>
+				</h2>
+		    </div>
+		<!--//banner-->
+ 	{% block main_content %}{% endblock main_content %}
+		
+{% include 'myadmin/layouts/footer.html' %}
+     <!--scrolling js-->
+	<script src="{% static 'myadmin/js/jquery.nicescroll.js' %}"></script>
+	<script src="{% static 'myadmin/js/scripts.js' %}"></script>
+	<!--//scrolling js-->
+
+   {% block scripts %}{% endblock scripts %}
+</body>
+</html>
+

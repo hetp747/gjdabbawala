@@ -1,0 +1,45 @@
+{% extends 'myadmin/layouts/base.html' %}
+{% load static %}
+{% block title %}View Feedback{% endblock title %}
+{% block banner %}View Feedback{% endblock banner %}
+{% block main_content %}
+<!--grid-->
+<div class="grid-form">
+
+  
+    <div class="grid-form1">
+      <h3 class="alert alert-danger text-center">All Feedback</h3>
+              
+      {% if feedbacks %}
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>ID</th>
+           <th>Review</th>
+          <th>Description</th>
+          <th>Customer</th>
+        </tr>
+      </thead>
+      <tbody>
+       {% for feedback in feedbacks %}
+          <tr>
+            <td>{{feedback.id}}</td>
+            <td>{{feedback.review}}</td>
+            <td>{{feedback.feedback}}</td>
+            <td>{{feedback.user.user}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+      <h5 class="text-center">No Feedback Available</h5>
+    {% endif %}
+    <div class="panel-body">
+            
+    </div>
+    <div class="bs-example" data-example-id="form-validation-states-with-icons">
+      
+    </div>
+     </div>
+     <!--//grid-->
+{% endblock main_content %}

@@ -1,0 +1,52 @@
+{% extends 'customer/layouts/base.html' %}
+{% load static %}
+{% block title %}Orders Details{% endblock title %}
+{% block main_content %}
+<!-- banner -->
+<div class="innerpage-banner" id="home">
+	<div class="inner-page-layer">
+	</div>
+</div>
+<!-- //banner -->
+
+<!--  -->
+<section class="mail pt-lg-5 pt-4">
+	<div class="container pt-lg-5">
+		<h1 class="heading text-center mb-sm-5 mb-4">Orders Details</h1>
+		<div class="row agileinfo_mail_grids">
+			<div class="col-lg-12 agileinfo_mail_grid_right">
+				
+        <table class="table table-bordered">
+          <thead>
+             <tr>
+               <th>Id</th>
+               <th>Food Id</th>
+               <th>Food Dish</th>
+               <th>Food Time</th>
+               <th>Price</th>
+               <th>Quantity</th>
+             </tr>
+           </thead>
+           <tbody>
+             {% for ord in ords %}
+             <tr>
+               <td>{{ord.order.id}}</td>
+               <td>{{ord.id}}</td>
+               <td>{{ord.food.fname}}</td>
+               <td>{{ord.ftime}}</td>
+               <td>{{ord.price}}</td>
+               <td>{{ord.quantity}}</td>
+               
+             </tr>
+             {% endfor %}
+           </tbody>
+         </table>
+
+			</div>
+			
+		</div>
+	</div>
+	
+</section>
+<!-- // -->
+{% endblock main_content %}

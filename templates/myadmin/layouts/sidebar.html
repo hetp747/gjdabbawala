@@ -1,0 +1,58 @@
+{% load static %}
+   
+<div class="navbar-default sidebar" role="navigation" style="margin-top: 0px;">
+  <div class="sidebar-nav navbar-collapse">
+  <ul class="nav" id="side-menu">
+  
+      <li>
+          <a href="{% url 'dashboard' %}" class=" hvr-bounce-to-right"><i class="fa fa-dashboard nav_icon "></i><span class="nav-label">Dashboards</span> </a>
+      </li>
+     
+    
+    <li>
+        <a href="#"><i class="fa fa-edit nav_icon"></i> <span class="nav-label">State</span><span class="fa arrow"></span></a>
+        <ul class="nav nav-second-level">
+            <li><a href="{% url 'add_state' %}" class=" hvr-bounce-to-right"><i class="fa fa-plus nav_icon"></i>Add State</a></li>
+            <li><a href="{% url 'view_state' %}" class=" hvr-bounce-to-right"><i class="fa fa-file-text-o nav_icon"></i>View State</a></li>
+        </ul>
+    </li>      
+
+    <li>
+        <a href="#"><i class="fa fa-edit nav_icon"></i> <span class="nav-label">City</span><span class="fa arrow"></span></a>
+        <ul class="nav nav-second-level">
+            <li><a href="{% url 'add_city' %}" class=" hvr-bounce-to-right"><i class="fa fa-plus nav_icon"></i>Add City</a></li>
+            <li><a href="{% url 'view_city' %}" class=" hvr-bounce-to-right"><i class="fa fa-file-text-o nav_icon"></i>View City</a></li>
+        </ul>
+    </li>      
+
+    <li>
+        <a href="#"><i class="fa fa-edit nav_icon"></i> <span class="nav-label">Area</span><span class="fa arrow"></span></a>
+        <ul class="nav nav-second-level">
+            <li><a href="{% url 'add_area' %}" class=" hvr-bounce-to-right"><i class="fa fa-plus nav_icon"></i>Add Area</a></li>
+            <li><a href="{% url 'view_area' %}" class=" hvr-bounce-to-right"><i class="fa fa-file-text-o nav_icon"></i>View Area</a></li>
+        </ul>
+    </li>      
+
+      <li>
+          <a href="{% url 'customer' %}" class=" hvr-bounce-to-right"><i class="fa fa-users nav_icon"></i> <span class="nav-label">All Customer</span> </a>
+      </li>
+      <li>
+          <a href="{% url 'agencies' %}" class=" hvr-bounce-to-right"><i class="fa fa-building-o nav_icon"></i> <span class="nav-label">All Agencies</span> </a>
+      </li>
+       <li>
+          <a href="{% url 'orders' %}" class=" hvr-bounce-to-right"><i class="fa fa-file-text-o nav_icon"></i> <span class="nav-label">All Orders</span> </a>
+      </li>
+      <li>
+          <a href="{% url 'view_inquiry' %}" class=" hvr-bounce-to-right"><i class="fa fa-file-text-o nav_icon"></i> <span class="nav-label">All Inquiry</span> </a>
+      </li>
+      <li>
+          <a href="{% url 'view_feedback' %}" class=" hvr-bounce-to-right"><i class="fa fa-file-text-o nav_icon"></i> <span class="nav-label">All Feedback</span> </a>
+      </li>
+      <li>
+          <a href="{% url 'myadmin_change_password' %}" class=" hvr-bounce-to-right"><i class="fa fa-file-text-o nav_icon"></i> <span class="nav-label">Change Password</span> </a>
+      </li>
+      <li>
+          <a href="/myadmin/logout/" class=" hvr-bounce-to-right"><i class="fa fa-sign-out nav_icon "></i><span class="nav-label" style="">Logout</span> </a>
+      </li>
+  </ul>
+</div>

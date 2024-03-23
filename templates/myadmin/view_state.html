@@ -1,0 +1,47 @@
+{% extends 'myadmin/layouts/base.html' %}
+{% load static %}
+{% block title %}View State{% endblock title %}
+{% block banner %}View State{% endblock banner %}
+{% block main_content %}
+<!--grid-->
+<div class="grid-form">
+ 		
+  
+  
+    <div class="grid-form1">
+      <h3 class="alert alert-danger text-center">All State</h3>
+              
+      {% if state %}
+      <table  able class="table table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>State</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+  
+        <tbody>
+          {% for st in state %}
+            <tr>
+              <td>{{st.id}}</td>
+              <td>{{st.state}}</td>
+              <td><a href="{% url 'edit_state' st.id %}">Edit</a></td>
+              <td><a href="{% url 'delete_state' st.id %}">Delete</a></td>
+            </tr>
+          {% endfor %}  
+        </tbody>
+      </table>
+    {% else %}
+      <h5 class="text-center">No State Available</h5>
+    {% endif %}
+    <div class="panel-body">
+            
+    </div>
+    <div class="bs-example" data-example-id="form-validation-states-with-icons">
+      
+    </div>
+     </div>
+     <!--//grid-->
+{% endblock main_content %}
